@@ -44,15 +44,19 @@ header .banner {
 
 /* Container */
 .container {
-    display: flex;
-    flex-direction: column;
     max-width: 1200px;
     margin: auto;
     padding: 50px 20px 0;
 }
 
-.split{
-    flex-direction: row !important;
+.dynamic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    align-items: start;
 }
 
 /* Main Content */
@@ -185,8 +189,11 @@ header .banner {
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column;
         margin: 0;
+    }
+
+    .dynamic{
+        flex-direction: column;
     }
 
     .content {
