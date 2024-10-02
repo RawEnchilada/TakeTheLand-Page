@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container delete-account-page">
+        <h1>Delete Account</h1>
+
+        <!-- Request Deletion Key Section -->
+        <section class="deletion-section">
+            <h2>Request a Deletion Key</h2>
+            <div class="centered-column">
+                <form id="request-deletion-form">
+                    <label for="email">Email:</label>
+                    <input type="email" id="request-email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="request-password" name="password" required>
+
+                    <button type="submit">Request Deletion Key</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Confirm Deletion Section -->
+        <section class="deletion-section">
+            <h2>Confirm Deletion</h2>
+            <div class="centered-column">
+                <form id="confirm-deletion-form">
+                    <label for="email">Email:</label>
+                    <input type="email" id="confirm-email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="confirm-password" name="password" required>
+
+                    <label for="deletion-key">Deletion Key:</label>
+                    <input type="text" id="deletion-key" name="deletion-key" required>
+
+                    <button type="submit">Confirm Deletion</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Go Back to Main Menu Button -->
+        <div class="centered-column">
+            <button id="back-to-menu">Go Back</button>
+        </div>
+
+    </div>
+
+    <!-- Include JavaScript -->
+    <script>
+        // JavaScript to sync email input between the two forms
+        document.getElementById('request-email').addEventListener('input', function() {
+            document.getElementById('confirm-email').value = this.value;
+        });
+
+        document.getElementById('confirm-email').addEventListener('input', function() {
+            document.getElementById('request-email').value = this.value;
+        });
+
+        // JavaScript for back to menu button
+        document.getElementById('back-to-menu').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change this to the actual main menu URL
+        });
+    </script>
+</body>
+</html>
