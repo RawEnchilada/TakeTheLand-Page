@@ -7,18 +7,20 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: radial-gradient(circle at center, #1f364b 0%, #155c6d 100%);
+    background: linear-gradient(90deg, #155c6d 0%, #1f364b 50%, #155c6d 100%);
     color: #fcf7e6;
 }
-
+html, body {
+    height: 100%; /* Ensure the body can expand fully */
+}
 .hexagon-pattern {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-image: url('hexagons.png');
     background-size: 25%;
     background-repeat: repeat;
     opacity: 0.4;
-    position: absolute;
+    position: fixed;
     z-index: -1;
 }
 
@@ -114,7 +116,155 @@ header .banner {
     flex: 1 1 calc(33.333% - 10px);
     border-radius: 5px;
 }
+/* Roadmap Container */
+.roadmap-container {
+    position: relative;
+    margin-top: 2rem;
+    padding-left: 60px; /* Space for the timeline */
+}
 
+/* Timeline Line */
+.timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #3282b8;
+    z-index: 1;
+}
+
+/* Milestone */
+.milestone {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 3rem;
+    margin-left: -58px;
+}
+
+/* Timeline Node */
+.timeline-node {
+    position: relative;
+    width: 60px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.timeline-node span {
+    position: absolute;
+    left: -10px;
+    width: 80px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #f8eebf;
+    text-align: right;
+    transform: translateX(-100%);
+}
+
+.timeline-node-circle {
+    width: 20px;
+    height: 20px;
+    background: #fcf7e6;
+    border: 3px solid #3282b8;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    z-index: 3;
+}
+
+/* Milestone Content */
+.milestone-content {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.milestone-header {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    color: #f8eebf;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.milestone-header i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #3282b8;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    margin: 10px;
+    color: #fcf7e6;
+    transition: background-color 0.3s;
+}
+
+.step i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.step.todo {
+    border-left: 4px solid #d9534f;
+}
+
+.step.inprogress {
+    border-left: 4px solid #f0ad4e;
+}
+
+.step.done {
+    border-left: 4px solid #5cb85c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .milestone {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 40px;
+    }
+
+    .milestone-content {
+        margin-left: 0;
+    }
+
+    .steps-container {
+        flex-direction: column;
+    }
+
+    .step {
+        flex-basis: 100%;
+        margin-left: 0;
+    }
+
+    .timeline-node span {
+        left: 0;
+        margin-left: 4rem;
+    }
+
+    .timeline-node-circle {
+        margin-left: -195px;
+    }
+}
 /* Sidebar */
 .sidebar {
     flex: 1;
